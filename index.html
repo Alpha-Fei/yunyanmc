@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="icon" href="img/favicon.ico" type="img/x-icon">
+        <title>云和烟的爱情(❁´◡`❁)</title>
+        <link href="css/stack-interface.css" rel="stylesheet" type="text/css" media="all">
+        <link href="css/iconsmind.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/lightbox.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/stack-interface.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/theme.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700%7CRubik:300,400,500" rel="stylesheet" type="text/css">
+        <link href="css/font-rubiklato.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="assets/waifu.css"/>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+
+    <!下面是背景音乐代码>
+    <style>
+        #btn {
+            width: 50px;
+            height: 50px;
+            background: url("img/record_13.png") no-repeat;
+            background-size: 100% 100%;
+            -webkit-background-size: 100% 100%;
+            -moz-background-size: 100% 100%;
+            -ms-background-size: 100% 100%;
+            -o-background-size: 100% 100%;
+            position: fixed;
+            top: 2.1866666666666665rem;
+            right: 5.22rem;
+            z-index: 6666;
+        }
+    </style>
+    <body>          <!背景音乐地址>
+        <div id="btn" style="cursor: url(img/cur/move.cur), pointer;">
+            <audio id="audio-player" ref="audio" preload="preload" autoplay="autoplay" loop="loop">
+                <source src="assets/Haggstrom.mp3" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+    </body>
+    
+    </html>
+    <script>
+        let isWeixin = () => {
+            let ua = window.navigator.userAgent.toLowerCase()
+            return;
+            /micromessenger/
+                .test(ua)
+        }
+        // method 自动播放
+        let audioPlayer = (id) => {
+            let audio = document.getElementById(id)
+            if (isWeixin()) {
+                document.addEventListener(
+                    'WeixinJSBridgeReady'
+                    , () => {
+                        audio.play()
+                    }, false);
+    
+                // 添加 getNetworkType 的判断原因, 请看问题分析2
+                if (typeof window.
+                    WeixinJSBridge
+                    ==
+                    "object"
+                    && typeof window.
+                        WeixinJSBridge
+                        .invoke ==
+                    "function"
+                ) {
+                    window.
+                        WeixinJSBridge
+                        .invoke(
+                            'getNetworkType'
+                            , {}, () => {
+                                audio.play()
+                            })
+                }
+            } else {
+                // audio.play();
+                let touchPlay = () => {
+                    audio.play();
+                    document.removeEventListener(
+                        'touchstart'
+                        , touchPlay, false)
+                };
+                if (audio.paused) {
+                    document.addEventListener(
+                        'touchstart'
+                        , touchPlay, false)
+                }
+            }
+        }
+        // 使用
+        audioPlayer(
+            'audio-player'
+        );
+    
+        var audio = document.getElementById("audio-player");
+        var btn = document.getElementById("btn");
+        var rotateVal = 0;
+    
+        var InterVal;     // 定时器
+        // 设置定时器
+        function rotate() {
+            InterVal = setInterval(function () {
+                rotateVal += 4;
+                // 设置旋转属性(顺时针)
+                btn.style.transform = 'rotate(' + rotateVal + 'deg)';
+                // 设置旋转属性(逆时针)
+                //img.style.transform = 'rotate(-' + rotateVal + 'deg)'
+                // 设置旋转时的动画  匀速0.1s
+                btn.style.transition = '0.1s linear'
+            }, 100)
+        }
+        // rotate();
+        btn.onclick = function () {         //点击按钮播放停止
+            if (audio.paused) { //判断当前的状态是否为暂停，若是则点击播放，否则暂停
+                audio.play();
+                rotate()
+            } else {
+                audio.pause();
+                clearInterval(InterVal)
+            }
+        };
+    </script>            <!上面的都是背景音乐代码>
+
+    <!下面是导航栏>
+    <body data-smooth-scroll-offset="77" style="cursor:url(img/cur/default.cur),auto;">
+        <div class="nav-container" _msthidden="13">
+            <div class="via-1630835877524" via="via-1630835877524" vio="摆设">
+                <div class="bar bar--sm visible-xs">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-3 col-md-2">
+                                <a href="index.html"> <img class="logo logo-dark" alt="logo" src="img/logo-light.png"> <img class="logo logo-light" alt="logo" src="img/logo-light.png"> </a>
+                            </div>
+                            <div class="col-9 col-md-10 text-right">
+                                <a href="#" class="hamburger-toggle" data-toggle-class="#menu1;hidden-xs hidden-sm"> <i class="icon icon--sm stack-interface stack-menu"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <nav id="menu1" class="bar bar-1 hidden-xs bar--absolute bar--transparent">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-1 hidden-xs col-md-4">
+                                <div class="bar__module">
+                                    <a href="http://yunyanmc.net" target="_self" style="cursor: url(img/cur/move.cur), pointer;"> <img class="logo logo-dark" alt="logo" src="img/logo-light.png"> <img class="logo logo-light" alt="logo" src="img/logo-light.png"> </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-11 col-md-12 text-right text-left-xs text-left-sm">
+                                <div class="bar__module">
+                                    <ul class="menu-horizontal text-left">
+                                        <li> <a href="http://yunyanmc.net" target="_self" style="cursor: url(img/cur/move.cur), pointer;">
+                                        首页
+                                    </a> </li>
+                                        <li class="dropdown"> <span class="dropdown__trigger" style="cursor: url(img/cur/help.cur), pointer;">帮助&nbsp;</span>
+                                            <div class="dropdown__container">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="dropdown__content col-lg-2">
+                                                            <ul class="menu-vertical">
+                                                                <li> <span>服务器IP地址<span> </li>
+                                                                <li> <span style="cursor: url(img/cur/text.cur), pointer;">yunyanmc.net<span> </li>
+                                                                <li> <span>备用IP地址<span> </li>
+                                                                <li> <span style="cursor: url(img/cur/text.cur), pointer;">218.89.171.149:58246 <span> </li>
+                                                                <li> <span>基岩版连接方式<span> </li>
+                                                                <li> <span style="cursor: url(img/cur/text.cur), pointer;">IP地址：47.93.233.162 <span> </li>
+                                                                <li> <span style="cursor: url(img/cur/text.cur), pointer;">端口：61720 <span> </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="bar__module">
+                                    <a class="btn btn--sm type--uppercase inner-link" style="cursor: url(img/cur/move.cur), pointer;" href="#namelist" target="_self"> <span class="btn__text"><span>云烟人们</span><br></span>
+                                    </a>
+                                    <a class="btn btn--sm type--uppercase inner-link" style="cursor: url(img/cur/move.cur), pointer;" href="https://yunyanmc.net/map.html#o1/0/20/200/-184/64/"  target="_blank"> <span class="btn__text">地图</span> </a>
+                                    <a class="btn btn--sm btn--primary type--uppercase" style="cursor: url(img/cur/move.cur), pointer;" href="https://classic.minecraft.net"  target="_blank"> <span class="btn__text">彩蛋</span> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <!首页第一个页面>
+        <div class="main-container" _msthidden="4">
+            <a id="yunyanmc" class="in-page-link"></a>
+            <section class="cover cover-features imagebg space--lg parallax" data-overlay="3">
+                <div class="background-image-holder"> <img alt="background" src="img/landing-23.jpg"> </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-7">
+                            <h1>
+                                <p><b>云烟之世<br></b><b>yunyanmc.net</b><b><br></b></p>
+                            </h1>
+                            <p class="lead"> 欢迎各位来到云烟之世服务器<br>本服务器有白名单验证，继续请加入QQ群申请白名单</p>
+                            <a class="btn btn--primary type--uppercase" style="cursor: url(img/cur/move.cur), pointer;"
+                            href="https://qm.qq.com/cgi-bin/qm/qr?k=PxxGJNySkdRJYE1Nar2CxdKY3wPnRs2O&amp;
+                            jump_from=webapi&quot;cursor:url(img/Redstonelink.cur),auto;>
+                            <img border=&quot;0&quot;src=&quot;//pub.idqqimg.com/wpa/images/group.png" target="_blank"> <span class="btn__text" style="cursor: url(img/cur/move.cur), pointer;">
+						加入QQ群</span> </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="feature feature-2 boxed boxed--border bg--white"> <i class="icon color--primary icon-Soup"></i>
+                                <div class="feature__body">
+                                    <p> 休闲养老，打发时间的不二之选<br>同时也会有一些娱乐活动</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature feature-2 boxed boxed--border bg--white"> <i class="icon color--primary icon-Apple"></i>
+                                <div class="feature__body">
+                                    <p>下载服务器定制整合包体验更佳~<br><a href="https://qm.qq.com/cgi-bin/qm/qr?k=PxxGJNySkdRJYE1Nar2CxdKY3wPnRs2O&amp;jump_from=webapi&quot;><img border=&quot;0&quot; src=&quot;//pub.idqqimg.com/wpa/images/group.png" target="_blank" style="cursor: url(img/cur/move.cur), pointer;">1.QQ群下载</a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="Download.html" target="_blank" style="cursor: url(img/cur/move.cur), pointer;">2.本页下载</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature feature-2 boxed boxed--border bg--white"> <i class="icon color--primary icon-Angel-Smiley"></i>
+                                <div class="feature__body">
+                                    <p> 本服务器为公益服，维护困难<br>大大们赏个脸~&nbsp; <a href="img/money.jpg" data-lightbox="Gallery 1" style="cursor: url(img/cur/Alternate.cur), pointer;">捐赠</a>&nbsp;&nbsp;&nbsp; <a href="Thanks/index.html" style="cursor: url(img/cur/move.cur), pointer;" target="_blank">感谢有你</a></p>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <a id="video" class="in-page-link"></a>
+
+            <!首页第二个页面-宣传片>
+            <section class="cover height-80 imagebg text-center parallax" data-overlay="1">
+                <div class="background-image-holder"> <img alt="background" src="img/landing-3.jpg"> </div>
+                <div class="container pos-vertical-center">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1> 云烟风情-感受纯粹的快乐</h1>
+                            <a class="btn btn--primary type--uppercase" style="cursor: url(img/cur/move.cur), pointer;" href="Video.html" target="_self"> <span class="btn__text">
+						查看宣传片</span> </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <a id="adj" class="in-page-link"></a>
+
+            <!第三页-广告位>
+            <section class="cover imagebg height-100 text-center parallax" data-overlay="3">
+                <div class="background-image-holder"><img alt="background" src="img/landing-10.jpg"></div>
+                <div class="container pos-vertical-center">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-8">
+                            <h1>广告位招租</h1>
+                            <p class="lead">可能是本服务器唯一的资金来源</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="pos-absolute pos-bottom col-12">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 text-left">
+                                <div class="text-block">
+                                    <h5>有意向请联系</h5> <span>2382948541@qq.com<br>3129562282@qq.com<br></span> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <a id="name-title" class="in-page-link"></a>
+
+            <!第四页-合作伙伴>
+            <section class="unpad cta cta-2 text-center">
+                <a href="#purchase-template">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2>云烟人们</h2>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </section>
+            <a id="namelist" class="in-page-link"></a>
+            <section class="text-center space--xxs">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="feature feature-8"> <img alt="Image" src="img/avatar-round-1.png">
+                                <h5>岁月静好|时光不老</h5> <span>腐竹-small_sweet</span> </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature feature-8"> <img alt="Image" src="img/avatar-round-2.png">
+                                <h5>菜就练是对的</h5> <span>副腐竹-Daniekiel</span> </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature feature-8"> <img alt="Image" src="img/avatar-round-3.png">
+                                <h5><a href="https://space.bilibili.com/348425592" target="_blank" style="cursor: url(img/cur/move.cur), pointer;">Mr.昀熠</a>(不是云姨)</a></h5> <span>XD管理员-Yun_Yi_awa</span> <div>网页设计开发</div></div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature feature-8"> <img alt="Image" src="img/avatar-round-4.png">
+                                <h5>啊冷同学</h5> <span>退役管理员-Meng_xiaoleng</span> </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature feature-8"> <img alt="Image" src="img/avatar-round-5.png">
+                                <h5><a href="https://v.douyin.com/dhdC3vn/" target="_blank" style="cursor: url(img/cur/move.cur), pointer;">Alpha·川࿐</a></h5> <span>本页设计开发-Alpha_Fei</span> </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature feature-8"> <img alt="Image" src="img/avatar-round-6.png">
+                                <h5>henchman123</h5> <span>提供服务器根据地-服务器运行基本</span> </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!快捷页面跳转>
+            <section class="page-navigator">
+                <ul>
+                    <li>
+                        <a href="#yunyanmc" class="inner-link" target="_self" style="cursor: url(img/cur/move.cur), pointer;"> </a>
+                    </li>
+                    <li>
+                        <a href="#video" class="inner-link" target="_self" style="cursor: url(img/cur/move.cur), pointer;"> </a>
+                    </li>
+                    <li>
+                        <a href="#adj" class="inner-link" target="_self" style="cursor: url(img/cur/move.cur), pointer;"> </a>
+                    </li>
+                    <li>
+                        <a href="#namelist" class="inner-link" target="_self" style="cursor: url(img/cur/move.cur), pointer;"> </a>
+                    </li>
+                </ul>
+            </section>
+
+            <!mc冷知识>
+            <section class="text-center cta cta-4 border--bottom imagebg space--xxs" data-gradient-bg="#4876BD,#5448BD,#8F48BD,#BD48B1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12"> 
+                            <span class="label label--inline">Tips：</span>
+                            <script language="JavaScript">
+                            var a = Math.random() + ""			//产生一个随机数
+                            var rand1 = a.charAt(5)				//的到这个数的第五个字符(实际还是从0~9的数字)
+                            quotes = new Array      			//创建消息数组
+                            quotes[1] = '<span style="color: white;">欢迎光临</span>'		//这里分配十句随机出现的文本
+                            quotes[2] = '<span style="color: white;">你知道吗？火焰附加附魔可以点燃营火(BE)</span>'
+                            quotes[3] = '<span style="color: white;">爬行者其实是猪的失败品……</span>'
+                            quotes[4] = '<span style="color: white;">在营火的下方放置干草块，浓烟高度会提升至25米。</span>'
+                            quotes[5] = '<span style="color: white;">你知道吗？铁傀儡会给小村民送花</span>'
+                            quotes[6] = '<span style="color: white;">在制图台里给地图加上玻璃板，那么地图的内容就锁定了。</span>'
+                            quotes[7] = '<span style="color: white;">每次进入，这里的信息都可以刷新</span>'
+                            quotes[8] = '<span style="color: white;">在花朵的两格范围内种植树苗，是有几率在长出来蜂窝的</span>'
+                            quotes[9] = '<span style="color: white;">鹦鹉在正在播放着唱片的唱片机周围会跳舞。</span>'
+                            quotes[0] = '<span style="color: white;">尝试在游戏中按下Alt+F4!</span>'
+                            var quote = quotes[rand1]	//由随机数选择一句话
+                            //-->
+                            </script>
+                            <script language="JavaScript">
+                            <!-- Hide
+                                document.write( quote )		//将上面选择的话写进页面
+                            // -->
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <script src="js/jquery-3.1.1.min.js"></script>
+        <script src="js/parallax.js"></script>
+        <script src="js/granim.min.js"></script>
+        <script src="js/lightbox.min.js"></script>
+        <script src="js/smooth-scroll.min.js"></script>
+        <script src="js/scripts.js"></script>
+        <script src="js/mouse.js" type="text/javascript"></script>
+        <div class="waifu"style="cursor: url(img/cur/SizeAll-B.cur), pointer;">                 //看板娘
+            <div class="waifu-tips" style="width: 250px; height: 70px; top: 0px; font-size: 12px; opacity: 0;"></div>
+            <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+            <div class="waifu-tool">
+                <span class="fui-home" style="cursor: url(img/cur/hand.cur), pointer;"></span>
+                <span class="fui-chat" style="cursor: url(img/cur/hand.cur), pointer;"></span>
+                <span class="fui-eye" style="cursor: url(img/cur/hand.cur), pointer;"></span>
+                <span class="fui-user" style="cursor: url(img/cur/hand.cur), pointer;"></span>
+                <span class="fui-photo" style="cursor: url(img/cur/hand.cur), pointer;"></span>
+                <span class="fui-info-circle" style="cursor: url(img/cur/hand.cur), pointer;"></span>
+                <span class="fui-cross" style="cursor: url(img/cur/hand.cur), pointer;"></span>
+            </div>
+        </div>
+        <script src="assets/waifu-tips.js"></script>
+        <script src="assets/live2d.js"></script>
+        <script type="text/javascript">initModel("assets/")</script><script type="text/javascript"> //点击特效
+            !function (e, t, a) {function r() {for (var e = 0; e < s.length; e++) s[e].alpha <= 0 ? (t.body.removeChild(s[e].el), s.splice(e, 1)) : (s[e].y--, s[e].scale += .004, s[e].alpha -= .013, s[e].el.style.cssText = "left:" + s[e].x + "px;top:" + s[e].y + "px;opacity:" + s[e].alpha + ";transform:scale(" + s[e].scale + "," + s[e].scale + ") rotate(45deg);background:" + s[e].color + ";z-index:99999");requestAnimationFrame(r)}function n() {var t = "function" == typeof e.onclick && e.onclick;e.onclick = function (e) {t && t(), o(e)}}function o(e) {var a = t.createElement("div");a.className = "heart", s.push({el: a,x: e.clientX - 5,y: e.clientY - 5,scale: 1,alpha: 1,color: c()}), t.body.appendChild(a)}function i(e) {var a = t.createElement("style");a.type = "text/css";try {a.appendChild(t.createTextNode(e))} catch (t) {a.styleSheet.cssText = e}t.getElementsByTagName("head")[0].appendChild(a)}function c() {return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"}var s = [];e.requestAnimationFrame = e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame || function (e) {setTimeout(e, 1e3 / 60)}, i(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"), n(), r()}(window, document);
+        </script>        <!-点击特效>
+    </body>
+
+</html>
